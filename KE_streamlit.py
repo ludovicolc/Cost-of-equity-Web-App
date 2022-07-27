@@ -223,6 +223,6 @@ with ticker_az:
 with dopo:    
     st.write('**Precisazioni:**')
     st.markdown('* l\'inflazione attesa viene calcolata come la media degli ultimi 5 anni, per ogni anno, dell\'inflazione effettivamente registrata')
-    st.markdown('* la variazione esposta sotto i vari risultati rappresenta il delta % tra il valore corrente e l\'ultimo valore registarto')
+    st.markdown('* la variazione esposta sotto i vari risultati rappresenta il delta % tra il valore corrente e l\'ultimo valore registrato')
     st.markdown('* i dati utilizzati per il calcolo del cost of equity riguardano lo S&P 500 e l\'economia degli USA')
     st.markdown('* utilizzare tickers di Yahoo Finance')
