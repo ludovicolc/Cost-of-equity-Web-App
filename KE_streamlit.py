@@ -167,7 +167,7 @@ with dataset:
     Per maggiori informazioni consultare la seguente [pagina](https://www.mckinsey.com/business-functions/strategy-and-corporate-finance/our-insights/the-real-cost-of-equity).''')
 
     col1, col2, col3 = st.columns(3)
-    slides = col1.slider(min_value=minimo, max_value=massimo, value=(minimo, massimo))
+    slides = col1.slider('', min_value=minimo, max_value=massimo, value=(minimo, massimo))
 
     # Ker decomposto
     stack_ker = df_ke[['Date', 'tips', 'erp']].loc[1:20]
