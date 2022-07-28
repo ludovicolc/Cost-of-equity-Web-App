@@ -163,11 +163,11 @@ massimo = int(df_ke['Date'][1])
 with dataset:
     st.header('Implied real cost of equity')
     st.write('''Il seguente grafico mostra il \'Real Ke\' degli ultimi 20 anni, calcolato attraverso
-    la metodologia descritta da: Marc H. Goedhart, Timothy M. Koller e Zane D. Williams (McKinsey & Company).
+    la metodologia descritta da Marc H. Goedhart, Timothy M. Koller e Zane D. Williams (McKinsey & Company).
     Per maggiori informazioni consultare la seguente [pagina](https://www.mckinsey.com/business-functions/strategy-and-corporate-finance/our-insights/the-real-cost-of-equity).''')
 
     col1, col2, col3 = st.columns(3)
-    slides = col1.slider('Tempo', min_value=minimo, max_value=massimo, value=(minimo, massimo))
+    slides = col1.slider(min_value=minimo, max_value=massimo, value=(minimo, massimo))
 
     # Ker decomposto
     stack_ker = df_ke[['Date', 'tips', 'erp']].loc[1:20]
