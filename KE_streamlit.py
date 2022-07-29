@@ -162,7 +162,7 @@ massimo = int(df_ke['Date'][1])
 
 with dataset:
     st.header('Implied real cost of equity')
-    st.latex(r'''Ker = \frac{E}{PE} (1 - \frac{g}{Roe}) + gr''')
+    st.latex(r'''Ker = \frac{1}{PE} (1 - \frac{g}{Roe}) + gr''')
     st.write('''Il seguente grafico mostra il \'Real Ke\' degli ultimi 20 anni, calcolato attraverso
     la metodologia descritta da Marc H. Goedhart, Timothy M. Koller e Zane D. Williams (McKinsey & Company).
     Per maggiori informazioni consultare la seguente [pagina](https://www.mckinsey.com/business-functions/strategy-and-corporate-finance/our-insights/the-real-cost-of-equity).''')
@@ -174,7 +174,7 @@ with dataset:
     stack_ker = df_ke[['Date', 'tips', 'erp']].loc[1:20]
     stack_ker.rename(columns={'tips': 'TIPS', 'erp': 'ERP'}, inplace=True)
     stack_ker.set_index('Date', inplace = True)
-    st.bar_chart(stack_ker.loc[slides[1]:slides[0]])
+    st.bar_chart(stack_ker.loc[slides[1]:slides[0]], use_container_width=False)
 
     
 
