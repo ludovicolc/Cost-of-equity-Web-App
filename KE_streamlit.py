@@ -166,7 +166,11 @@ with dataset:
     st.write('''Il seguente grafico mostra il \'Real Ke\' degli ultimi 20 anni, calcolato attraverso
     la metodologia descritta da Marc H. Goedhart, Timothy M. Koller e Zane D. Williams (McKinsey & Company).
     Per maggiori informazioni consultare la seguente [pagina](https://www.mckinsey.com/business-functions/strategy-and-corporate-finance/our-insights/the-real-cost-of-equity).''')
-
+    st.write('ERP = Equity Risk Premium')
+    st.write('TIPS = Treasury Inflation-Protected Security')
+             
+    
+    
     col1, col2, col3 = st.columns(3)
     slides = col1.slider('', min_value=minimo, max_value=massimo, value=(minimo, massimo))
 
@@ -174,7 +178,7 @@ with dataset:
     stack_ker = df_ke[['Date', 'tips', 'erp']].loc[1:20]
     stack_ker.rename(columns={'tips': 'TIPS', 'erp': 'ERP'}, inplace=True)
     stack_ker.set_index('Date', inplace = True)
-    st.bar_chart(stack_ker.loc[slides[1]:slides[0]], use_container_width=False)
+    st.bar_chart(stack_ker.loc[slides[1]:slides[0]])
 
     
 
@@ -206,22 +210,23 @@ with ticker_az:
     col_1, col_2, col_3 = st.columns(3)
 
     if beta == 0:
-        col_1.metric('Real Cost of equity', 'Na')    
+        col_1.metric('Real Cost of equity', 'N/A')    
     else:
         col_1.metric('Real Cost of equity', f'{round(ker_azienda*100, 2)}%')
 
     if beta == 0:
-        col_2.metric('Cost of equity (TIPS spread)', 'Na')    
+        col_2.metric('Cost of equity (TIPS spread)', 'N/A')    
     else:
         col_2.metric('Cost of equity (TIPS spread)', f'{round(ke_azienda_Tips_s*100, 2)}%')
 
     if beta == 0:
-        col_3.metric('Cost of equity (Inflazione attesa)', 'Na')    
+        col_3.metric('Cost of equity (Inflazione attesa)', 'N/A')    
     else:
         col_3.metric('Cost of equity (Inflazione attesa)', f'{round(ke_azienda_ex_inf*100, 2)}%')
 
 
 with dopo:    
+    st.markdown("""---""")
     st.write('**Precisazioni:**')
     st.markdown('* l\'inflazione attesa viene calcolata come la media degli ultimi 5 anni, per ogni anno, dell\'inflazione effettivamente registrata')
     st.markdown('* la variazione esposta sotto i vari risultati rappresenta il delta % tra il valore corrente e l\'ultimo valore registrato')
