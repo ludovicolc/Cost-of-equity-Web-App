@@ -7,7 +7,7 @@ import pandas as pd
 header = st.container()
 dataset = st.container()
 ticker_az = st.container()
-dopo = st.container()
+note = st.container()
 
 @st.cache
 def get_data():
@@ -18,7 +18,7 @@ def get_data():
     df_pe['Value Value'] = pd.to_numeric(df_pe['Value Value'])
     df_pe.rename(columns = {'Value Value':'Pe'}, inplace = True)
 
-    # Earning Yield%
+    # Earning Yield %
     ey = pd.read_html('https://www.multpl.com/s-p-500-earnings-yield/table/by-year')
     df_ey = pd.DataFrame(ey[0])
     df_ey['Value Value'] = df_ey['Value Value'].str.replace('%', '')
@@ -34,7 +34,7 @@ def get_data():
     df_pb['Value Value'] = pd.to_numeric(df_pb['Value Value'])
     df_pb.rename(columns = {'Value Value':'Price_book'}, inplace = True)
 
-    # US real GDP growth%
+    # US real GDP growth %
     gr = pd.read_html('https://www.multpl.com/us-real-gdp-growth-rate/table/by-year')
     df_gr = pd.DataFrame(gr[0])
     df_gr['Value Value'] = df_gr['Value Value'].str.replace('%', '')
@@ -106,7 +106,7 @@ def get_data():
 
     # Inflation adjusted erp
     df_ke['erp'] = df_ke['Ker'] - df_ke['tips']
-    # Ke con expecyed inflation
+    # Ke con expected inflation
     df_ke['Ke_exp_inflation'] = df_ke['Ker'] + df_ke['expected_inflation']
     # Ke con tips spread
     df_ke['Ke_tips_spread'] = df_ke['Ker'] + df_ke['tips_spread']
@@ -225,7 +225,7 @@ with ticker_az:
         col_3.metric('Cost of equity (Inflazione attesa)', f'{round(ke_azienda_ex_inf*100, 2)}%')
 
 
-with dopo:    
+with note:    
     st.markdown("""---""")
     st.write('**Precisazioni:**')
     st.markdown('* l\'inflazione attesa viene calcolata come la media degli ultimi 5 anni, per ogni anno, dell\'inflazione effettivamente registrata')
